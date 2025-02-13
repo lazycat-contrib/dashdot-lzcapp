@@ -1,0 +1,26 @@
+lzc-sdk-version: "0.1"
+name: Dashdot
+package: cloud.lazycat.app.dashdot
+version: 5.9.0
+description: 一个现代的服务器仪表盘
+homepage: https://getdashdot.com
+author: getdashdot
+application:
+  subdomain: dashdot
+  background_task: true
+  multi_instance: false
+  gpu_accel: false
+  kvm_accel: false
+  usb_accel: false
+  routes:
+    - /=http://dash.cloud.lazycat.app.dashdot.lzcapp:3001/
+services:
+  dash:
+    image: registry.lazycat.cloud/czyt/mauricenino/dashdot:b44d761937a5aa99
+    binds:
+      - /lzcapp/var/host:/mnt/host
+    environment:
+      - DASHDOT_PAGE_TITLE=${LAZYCAT_BOX_NAME} 's Dashboard
+      - DASHDOT_ENABLE_CPU_TEMPS=true
+      - DASHDOT_OVERRIDE_OS=Debian
+      - DASHDOT_ACCEPT_OOKLA_EULA=true

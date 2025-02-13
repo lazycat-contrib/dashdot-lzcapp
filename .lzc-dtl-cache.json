@@ -1,0 +1,32 @@
+{
+  "name": "Dashdot",
+  "package": "cloud.lazycat.app.dashdot",
+  "description": "a modern server dashboard",
+  "homepage": "https://getdashdot.com",
+  "author": "czyt",
+  "app_features": [
+    "background_task"
+  ],
+  "subdomain": "dashdot",
+  "version": "0.0.1",
+  "iconPath": "logo512.png",
+  "composePath": "docker-compose.yml",
+  "unsupported_platforms": [],
+  "lastRouteType": "from_compose",
+  "port_mappings": {
+    "dash_80_3001": {
+      "use": true,
+      "type": "http",
+      "path": "/",
+      "targetPath": "/"
+    }
+  },
+  "image_mauricenino_dashdot_latest": {
+    "originalImage": "mauricenino/dashdot:latest",
+    "pushTarget": "lazycat",
+    "newImageName": "registry.lazycat.cloud/czyt/mauricenino/dashdot:b44d761937a5aa99",
+    "timestamp": "2025-02-13T13:27:03.189Z"
+  },
+  "dash_volume_/mnt/host_action": "emptyDir",
+  "dash_volume_/mnt/host_location": "app_data"
+}
