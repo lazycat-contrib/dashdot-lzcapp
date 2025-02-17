@@ -21,5 +21,4 @@ services:
     environment:
       - DASHDOT_PAGE_TITLE=${LAZYCAT_BOX_NAME} 's Dashboard
       - DASHDOT_ENABLE_CPU_TEMPS=true
-      - DASHDOT_OVERRIDE_OS=Debian
       - DASHDOT_ACCEPT_OOKLA_EULA=true
