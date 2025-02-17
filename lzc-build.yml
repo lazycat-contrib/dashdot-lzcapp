@@ -9,3 +9,8 @@ pkgout: ./
 # icon 仅仅允许 png 后缀的文件
 icon: ./icon.png
 
+compose_override:
+  services:
+    dash:
+      volumes:
+        - /:/mnt/host:ro
