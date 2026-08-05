@@ -17,6 +17,7 @@ application:
     - /=http://dash.cloud.lazycat.app.dashdot.lzcapp:3001/
 services:
   dash:
+  # mauricenino/dashdot:5.9.2
     image: registry.lazycat.cloud/czyt/mauricenino/dashdot:6a748aeaaf0509ee
     environment:
       - DASHDOT_PAGE_TITLE=${LAZYCAT_BOX_NAME} 's Dashboard
