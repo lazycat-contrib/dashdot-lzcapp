@@ -9,11 +9,11 @@ application:
     - location: /
       backend: >-
         {{ printf "http://dash:%s%s" .U.port .U.routing_path }}
-
 services:
   dash:
     # mauricenino/dashdot:5.9.2
-    image: registry.lazycat.cloud/czyt/mauricenino/dashdot:6a748aeaaf0509ee
+    # upstream: mauricenino/dashdot:6.3.4
+    image: registry.lazycat.cloud/czyt/mauricenino/dashdot:4fb12bebf77e3d13
     environment:
       - >-
         {{ printf "DASHDOT_WIDGET_LIST=%s" .U.widget_list | quote }}
