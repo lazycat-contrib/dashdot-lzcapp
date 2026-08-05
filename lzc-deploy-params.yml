@@ -498,7 +498,7 @@ locales:
   zh:
     widget_list:
       name: "组件列表"
-      description: "配置 组件列表（DASHDOT_WIDGET_LIST）。官方默认值：os,cpu,storage,ram,network。"
+      description: "配置组件列表（DASHDOT_WIDGET_LIST）。可选值：os、cpu、storage、ram、network、gpu；使用英文逗号分隔，可按填写顺序排列。官方默认值：os,cpu,storage,ram,network。"
     port:
       name: "服务端口"
       description: "配置 服务端口（DASHDOT_PORT）。官方默认值：3001。"
@@ -516,7 +516,7 @@ locales:
       description: "配置 禁用后台指标采集（DASHDOT_DISABLE_BACKGROUND_STATS_COLLECTION）。官方默认值：false。"
     show_dash_version:
       name: "版本显示方式"
-      description: "配置 版本显示方式（DASHDOT_SHOW_DASH_VERSION）。官方默认值：icon_hover。"
+      description: "配置版本显示方式（DASHDOT_SHOW_DASH_VERSION）。可选值：bottom_right、icon_hover、none。官方默认值：icon_hover。"
     use_imperial:
       name: "使用英制单位"
       description: "配置 使用英制单位（DASHDOT_USE_IMPERIAL）。官方默认值：false。"
@@ -525,7 +525,7 @@ locales:
       description: "配置 始终显示百分比（DASHDOT_ALWAYS_SHOW_PERCENTAGES）。官方默认值：false。"
     os_label_list:
       name: "系统信息字段"
-      description: "配置 系统信息字段（DASHDOT_OS_LABEL_LIST）。官方默认值：os,arch,up_since。"
+      description: "配置系统信息字段（DASHDOT_OS_LABEL_LIST）。可选值：os、arch、up_since、dash_version；使用英文逗号分隔。官方默认值：os,arch,up_since。"
     show_host:
       name: "显示主机名"
       description: "配置 显示主机名（DASHDOT_SHOW_HOST）。官方默认值：false。"
@@ -546,16 +546,16 @@ locales:
       description: "配置 覆盖系统架构（DASHDOT_OVERRIDE_ARCH）。默认不设置，仅在填写后生效。"
     cpu_label_list:
       name: "CPU 信息字段"
-      description: "配置 CPU 信息字段（DASHDOT_CPU_LABEL_LIST）。官方默认值：brand,model,cores,threads,frequency。"
+      description: "配置 CPU 信息字段（DASHDOT_CPU_LABEL_LIST）。可选值：brand、model、cores、threads、frequency；使用英文逗号分隔。官方默认值：brand,model,cores,threads,frequency。"
     enable_cpu_temps:
       name: "显示 CPU 温度"
       description: "配置 显示 CPU 温度（DASHDOT_ENABLE_CPU_TEMPS）。官方默认值：false。"
     cpu_temps_mode:
       name: "CPU 温度模式"
-      description: "配置 CPU 温度模式（DASHDOT_CPU_TEMPS_MODE）。官方默认值：avg。"
+      description: "配置 CPU 温度模式（DASHDOT_CPU_TEMPS_MODE）。可选值：avg、max。官方默认值：avg。"
     cpu_cores_toggle_mode:
       name: "CPU 核心显示模式"
-      description: "配置 CPU 核心显示模式（DASHDOT_CPU_CORES_TOGGLE_MODE）。官方默认值：toggle。"
+      description: "配置 CPU 核心显示模式（DASHDOT_CPU_CORES_TOGGLE_MODE）。可选值：toggle、multi-core、average。官方默认值：toggle。"
     cpu_widget_grow:
       name: "CPU 组件相对宽度"
       description: "配置 CPU 组件相对宽度（DASHDOT_CPU_WIDGET_GROW）。官方默认值：4。"
@@ -585,7 +585,7 @@ locales:
       description: "配置 覆盖 CPU 频率（DASHDOT_OVERRIDE_CPU_FREQUENCY）。默认不设置，仅在填写后生效。"
     storage_label_list:
       name: "存储信息字段"
-      description: "配置 存储信息字段（DASHDOT_STORAGE_LABEL_LIST）。官方默认值：brand,size,type。"
+      description: "配置存储信息字段（DASHDOT_STORAGE_LABEL_LIST）。可选值：brand、size、type；使用英文逗号分隔。官方默认值：brand,size,type。"
     fs_device_filter:
       name: "存储设备过滤列表"
       description: "配置 存储设备过滤列表（DASHDOT_FS_DEVICE_FILTER）。默认不设置，仅在填写后生效。"
@@ -618,7 +618,7 @@ locales:
       description: "配置 覆盖存储类型（DASHDOT_OVERRIDE_STORAGE_TYPES）。默认不设置，仅在填写后生效。"
     ram_label_list:
       name: "内存信息字段"
-      description: "配置 内存信息字段（DASHDOT_RAM_LABEL_LIST）。官方默认值：brand,size,type,frequency。"
+      description: "配置内存信息字段（DASHDOT_RAM_LABEL_LIST）。可选值：brand、size、type、frequency；使用英文逗号分隔。官方默认值：brand,size,type,frequency。"
     ram_widget_grow:
       name: "内存组件相对宽度"
       description: "配置 内存组件相对宽度（DASHDOT_RAM_WIDGET_GROW）。官方默认值：4。"
@@ -645,7 +645,7 @@ locales:
       description: "配置 覆盖内存频率（DASHDOT_OVERRIDE_RAM_FREQUENCY）。默认不设置，仅在填写后生效。"
     network_label_list:
       name: "网络信息字段"
-      description: "配置 网络信息字段（DASHDOT_NETWORK_LABEL_LIST）。官方默认值：type,speed_up,speed_down,interface_speed。"
+      description: "配置网络信息字段（DASHDOT_NETWORK_LABEL_LIST）。可选值：type、speed_up、speed_down、interface_speed、public_ip；使用英文逗号分隔。官方默认值：type,speed_up,speed_down,interface_speed。"
     accept_ookla_eula:
       name: "接受 Ookla 协议"
       description: "配置 接受 Ookla 协议（DASHDOT_ACCEPT_OOKLA_EULA）。官方默认值：false。"
@@ -693,7 +693,7 @@ locales:
       description: "配置 覆盖公网 IP（DASHDOT_OVERRIDE_NETWORK_PUBLIC_IP）。默认不设置，仅在填写后生效。"
     gpu_label_list:
       name: "GPU 信息字段"
-      description: "配置 GPU 信息字段（DASHDOT_GPU_LABEL_LIST）。官方默认值：brand, model, memory。"
+      description: "配置 GPU 信息字段（DASHDOT_GPU_LABEL_LIST）。可选值：brand、model、memory；使用英文逗号分隔。官方默认值：brand, model, memory。"
     gpu_brand_filter:
       name: "GPU 品牌过滤列表"
       description: "配置 GPU 品牌过滤列表（DASHDOT_GPU_BRAND_FILTER）。默认不设置，仅在填写后生效。"
@@ -721,4 +721,3 @@ locales:
     override_gpu_memories:
       name: "覆盖 GPU 显存"
       description: "配置 覆盖 GPU 显存（DASHDOT_OVERRIDE_GPU_MEMORIES）。默认不设置，仅在填写后生效。"
-
