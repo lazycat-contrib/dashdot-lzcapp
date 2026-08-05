@@ -1,0 +1,724 @@
+params:
+  - id: widget_list
+    type: string
+    name: "Widget List"
+    description: "Comma-separated values: os, cpu, storage, ram, network, gpu."
+    optional: true
+    default_value: "os,cpu,storage,ram,network"
+
+  - id: port
+    type: string
+    name: "Port"
+    description: "Backend port. Changing it also updates the LazyCat upstream target. Enter a numeric value as text."
+    optional: true
+    default_value: "3001"
+
+  - id: routing_path
+    type: string
+    name: "Routing Path"
+    description: "Path where Dashdot is served, for example / or /dashdot."
+    optional: true
+    default_value: "/"
+
+  - id: page_title
+    type: string
+    name: "Page Title"
+    description: "Browser page title."
+    optional: false
+    default_value: "dash."
+
+  - id: disable_integrations
+    type: bool
+    name: "Disable Integrations"
+    description: "Disable CORS and open API integration endpoints."
+    optional: true
+    default_value: "false"
+
+  - id: disable_background_stats_collection
+    type: bool
+    name: "Disable Background Stats Collection"
+    description: "Disable background metric collection."
+    optional: true
+    default_value: "false"
+
+  - id: show_dash_version
+    type: string
+    name: "Show Dashdot Version"
+    description: "Allowed values: bottom_right, icon_hover, none."
+    optional: true
+    default_value: "icon_hover"
+
+  - id: use_imperial
+    type: bool
+    name: "Use Imperial"
+    description: "Show imperial rather than metric units."
+    optional: true
+    default_value: "false"
+
+  - id: always_show_percentages
+    type: bool
+    name: "Always Show Percentages"
+    description: "Always show graph percentages."
+    optional: true
+    default_value: "false"
+
+  - id: os_label_list
+    type: string
+    name: "OS Label List"
+    description: "Comma-separated values: os, arch, up_since, dash_version."
+    optional: true
+    default_value: "os,arch,up_since"
+
+  - id: show_host
+    type: bool
+    name: "Show Host"
+    description: "Show the host in the server widget."
+    optional: true
+    default_value: "false"
+
+  - id: custom_host
+    type: string
+    name: "Custom Host"
+    description: "Custom host shown when Show Host is enabled."
+    optional: true
+
+  - id: os_widget_grow
+    type: string
+    name: "OS Widget Grow"
+    description: "Relative size of the server widget. Enter a numeric value as text."
+    optional: true
+    default_value: "2.5"
+
+  - id: os_widget_min_width
+    type: string
+    name: "OS Widget Min Width"
+    description: "Minimum server widget width in pixels. Enter a numeric value as text."
+    optional: true
+    default_value: "300"
+
+  - id: override_os
+    type: string
+    name: "Override OS"
+    description: "Override the detected operating system name."
+    optional: true
+
+  - id: override_arch
+    type: string
+    name: "Override Arch"
+    description: "Override the detected system architecture."
+    optional: true
+
+  - id: cpu_label_list
+    type: string
+    name: "CPU Label List"
+    description: "Comma-separated values: brand, model, cores, threads, frequency."
+    optional: true
+    default_value: "brand,model,cores,threads,frequency"
+
+  - id: enable_cpu_temps
+    type: bool
+    name: "Enable CPU Temps"
+    description: "Enable CPU temperature display; it may not work on a VPS."
+    optional: true
+    default_value: "false"
+
+  - id: cpu_temps_mode
+    type: string
+    name: "CPU Temps Mode"
+    description: "Allowed values: avg, max."
+    optional: true
+    default_value: "avg"
+
+  - id: cpu_cores_toggle_mode
+    type: string
+    name: "CPU Cores Toggle Mode"
+    description: "Allowed values: toggle, multi-core, average."
+    optional: true
+    default_value: "toggle"
+
+  - id: cpu_widget_grow
+    type: string
+    name: "CPU Widget Grow"
+    description: "Relative size of the CPU widget. Enter a numeric value as text."
+    optional: true
+    default_value: "4"
+
+  - id: cpu_widget_min_width
+    type: string
+    name: "CPU Widget Min Width"
+    description: "Minimum CPU widget width in pixels. Enter a numeric value as text."
+    optional: true
+    default_value: "500"
+
+  - id: cpu_shown_datapoints
+    type: string
+    name: "CPU Shown Datapoints"
+    description: "Number of datapoints in the CPU graph. Enter a numeric value as text."
+    optional: true
+    default_value: "20"
+
+  - id: cpu_poll_interval
+    type: string
+    name: "CPU Poll Interval"
+    description: "CPU polling interval in milliseconds. Enter a numeric value as text."
+    optional: true
+    default_value: "1000"
+
+  - id: override_cpu_brand
+    type: string
+    name: "Override CPU Brand"
+    description: "Override the detected CPU brand."
+    optional: true
+
+  - id: override_cpu_model
+    type: string
+    name: "Override CPU Model"
+    description: "Override the detected CPU model."
+    optional: true
+
+  - id: override_cpu_cores
+    type: string
+    name: "Override CPU Cores"
+    description: "Override the detected CPU core count. Enter a numeric value as text."
+    optional: true
+
+  - id: override_cpu_threads
+    type: string
+    name: "Override CPU Threads"
+    description: "Override the detected CPU thread count. Enter a numeric value as text."
+    optional: true
+
+  - id: override_cpu_frequency
+    type: string
+    name: "Override CPU Frequency"
+    description: "Override CPU frequency in GHz, for example 2.8. Enter a numeric value as text."
+    optional: true
+
+  - id: storage_label_list
+    type: string
+    name: "Storage Label List"
+    description: "Comma-separated values: brand, size, type."
+    optional: true
+    default_value: "brand,size,type"
+
+  - id: fs_device_filter
+    type: string
+    name: "FS Device Filter"
+    description: "Comma-separated device names to hide."
+    optional: true
+
+  - id: fs_type_filter
+    type: string
+    name: "FS Type Filter"
+    description: "Comma-separated filesystem types to hide."
+    optional: true
+    default_value: "cifs,9p,fuse.rclone,fuse.mergerfs,nfs4,iso9660,fuse.shfs,autofs"
+
+  - id: fs_virtual_mounts
+    type: string
+    name: "FS Virtual Mounts"
+    description: "Comma-separated virtual filesystem names to display."
+    optional: true
+
+  - id: storage_widget_items_per_page
+    type: string
+    name: "Storage Widget Items Per Page"
+    description: "Number of storage items per page. Enter a numeric value as text."
+    optional: true
+    default_value: "3"
+
+  - id: storage_widget_grow
+    type: string
+    name: "Storage Widget Grow"
+    description: "Relative size of the storage widget. Enter a numeric value as text."
+    optional: true
+    default_value: "3.5"
+
+  - id: storage_widget_min_width
+    type: string
+    name: "Storage Widget Min Width"
+    description: "Minimum storage widget width in pixels. Enter a numeric value as text."
+    optional: true
+    default_value: "500"
+
+  - id: storage_poll_interval
+    type: string
+    name: "Storage Poll Interval"
+    description: "Storage polling interval in milliseconds. Enter a numeric value as text."
+    optional: true
+    default_value: "60000"
+
+  - id: override_storage_brands
+    type: string
+    name: "Override Storage Brands"
+    description: "Comma-separated device=brand pairs, for example sda=Samsung."
+    optional: true
+
+  - id: override_storage_sizes
+    type: string
+    name: "Override Storage Sizes"
+    description: "Comma-separated device=size-in-bytes pairs."
+    optional: true
+
+  - id: override_storage_types
+    type: string
+    name: "Override Storage Types"
+    description: "Comma-separated device=type pairs, for example sda=SSD."
+    optional: true
+
+  - id: ram_label_list
+    type: string
+    name: "RAM Label List"
+    description: "Comma-separated values: brand, size, type, frequency."
+    optional: true
+    default_value: "brand,size,type,frequency"
+
+  - id: ram_widget_grow
+    type: string
+    name: "RAM Widget Grow"
+    description: "Relative size of the memory widget. Enter a numeric value as text."
+    optional: true
+    default_value: "4"
+
+  - id: ram_widget_min_width
+    type: string
+    name: "RAM Widget Min Width"
+    description: "Minimum memory widget width in pixels. Enter a numeric value as text."
+    optional: true
+    default_value: "500"
+
+  - id: ram_shown_datapoints
+    type: string
+    name: "RAM Shown Datapoints"
+    description: "Number of datapoints in the memory graph. Enter a numeric value as text."
+    optional: true
+    default_value: "20"
+
+  - id: ram_poll_interval
+    type: string
+    name: "RAM Poll Interval"
+    description: "Memory polling interval in milliseconds. Enter a numeric value as text."
+    optional: true
+    default_value: "1000"
+
+  - id: override_ram_brand
+    type: string
+    name: "Override RAM Brand"
+    description: "Override the detected memory brand."
+    optional: true
+
+  - id: override_ram_size
+    type: string
+    name: "Override RAM Size"
+    description: "Override memory size in bytes. Enter a numeric value as text."
+    optional: true
+
+  - id: override_ram_type
+    type: string
+    name: "Override RAM Type"
+    description: "Override the detected memory type."
+    optional: true
+
+  - id: override_ram_frequency
+    type: string
+    name: "Override RAM Frequency"
+    description: "Override the detected memory frequency. Enter a numeric value as text."
+    optional: true
+
+  - id: network_label_list
+    type: string
+    name: "Network Label List"
+    description: "Comma-separated values: type, speed_up, speed_down, interface_speed, public_ip."
+    optional: true
+    default_value: "type,speed_up,speed_down,interface_speed"
+
+  - id: accept_ookla_eula
+    type: bool
+    name: "Accept Ookla EULA"
+    description: "Use Ookla speedtest and accept its EULA, Terms, and Privacy Policy."
+    optional: true
+    default_value: "false"
+
+  - id: use_network_interface
+    type: string
+    name: "Use Network Interface"
+    description: "Network interface to use instead of the detected gateway."
+    optional: true
+
+  - id: speed_test_from_path
+    type: string
+    name: "Speed Test From Path"
+    description: "Path to a speed-test JSON file; Docker host paths must start with /mnt/host."
+    optional: true
+
+  - id: network_speed_as_bytes
+    type: bool
+    name: "Network Speed As Bytes"
+    description: "Show bytes per second instead of bits per second."
+    optional: true
+    default_value: "false"
+
+  - id: speed_test_interval
+    type: string
+    name: "Speed Test Interval"
+    description: "Speed-test interval in minutes. Enter a numeric value as text."
+    optional: true
+    default_value: "240"
+
+  - id: speed_test_interval_cron
+    type: string
+    name: "Speed Test Interval Cron"
+    description: "Cron expression that overrides the numeric speed-test interval."
+    optional: true
+
+  - id: network_widget_grow
+    type: string
+    name: "Network Widget Grow"
+    description: "Relative size of the network widget. Enter a numeric value as text."
+    optional: true
+    default_value: "6"
+
+  - id: network_widget_min_width
+    type: string
+    name: "Network Widget Min Width"
+    description: "Minimum network widget width in pixels. Enter a numeric value as text."
+    optional: true
+    default_value: "500"
+
+  - id: network_shown_datapoints
+    type: string
+    name: "Network Shown Datapoints"
+    description: "Number of datapoints in each network graph. Enter a numeric value as text."
+    optional: true
+    default_value: "20"
+
+  - id: network_poll_interval
+    type: string
+    name: "Network Poll Interval"
+    description: "Network polling interval in milliseconds. Enter a numeric value as text."
+    optional: true
+    default_value: "1000"
+
+  - id: override_network_type
+    type: string
+    name: "Override Network Type"
+    description: "Override the detected network type."
+    optional: true
+
+  - id: override_network_speed_up
+    type: string
+    name: "Override Network Speed Up"
+    description: "Override upload speed in bits per second. Enter a numeric value as text."
+    optional: true
+
+  - id: override_network_speed_down
+    type: string
+    name: "Override Network Speed Down"
+    description: "Override download speed in bits per second. Enter a numeric value as text."
+    optional: true
+
+  - id: override_network_interface_speed
+    type: string
+    name: "Override Network Interface Speed"
+    description: "Override interface speed in megabits per second. Enter a numeric value as text."
+    optional: true
+
+  - id: override_network_public_ip
+    type: string
+    name: "Override Network Public IP"
+    description: "Override the detected public IP address."
+    optional: true
+
+  - id: gpu_label_list
+    type: string
+    name: "GPU Label List"
+    description: "Comma-separated values: brand, model, memory."
+    optional: true
+    default_value: "brand, model, memory"
+
+  - id: gpu_brand_filter
+    type: string
+    name: "GPU Brand Filter"
+    description: "Comma-separated, case-sensitive GPU brands to show."
+    optional: true
+
+  - id: gpu_model_filter
+    type: string
+    name: "GPU Model Filter"
+    description: "Comma-separated, case-sensitive GPU models to show."
+    optional: true
+
+  - id: gpu_widget_grow
+    type: string
+    name: "GPU Widget Grow"
+    description: "Relative size of the GPU widget. Enter a numeric value as text."
+    optional: true
+    default_value: "6"
+
+  - id: gpu_widget_min_width
+    type: string
+    name: "GPU Widget Min Width"
+    description: "Minimum GPU widget width in pixels. Enter a numeric value as text."
+    optional: true
+    default_value: "700"
+
+  - id: gpu_shown_datapoints
+    type: string
+    name: "GPU Shown Datapoints"
+    description: "Number of datapoints in the GPU graph. Enter a numeric value as text."
+    optional: true
+    default_value: "20"
+
+  - id: gpu_poll_interval
+    type: string
+    name: "GPU Poll Interval"
+    description: "GPU polling interval in milliseconds. Enter a numeric value as text."
+    optional: true
+    default_value: "1000"
+
+  - id: override_gpu_brands
+    type: string
+    name: "Override GPU Brands"
+    description: "Comma-separated GPU brands; empty positions preserve detected values."
+    optional: true
+
+  - id: override_gpu_models
+    type: string
+    name: "Override GPU Models"
+    description: "Comma-separated GPU models; empty positions preserve detected values."
+    optional: true
+
+  - id: override_gpu_memories
+    type: string
+    name: "Override GPU Memories"
+    description: "Comma-separated GPU memory sizes in MiB; empty positions preserve detected values."
+    optional: true
+
+locales:
+  zh:
+    widget_list:
+      name: "组件列表"
+      description: "配置 组件列表（DASHDOT_WIDGET_LIST）。官方默认值：os,cpu,storage,ram,network。"
+    port:
+      name: "服务端口"
+      description: "配置 服务端口（DASHDOT_PORT）。官方默认值：3001。"
+    routing_path:
+      name: "路由路径"
+      description: "配置 路由路径（DASHDOT_ROUTING_PATH）。官方默认值：/。"
+    page_title:
+      name: "页面标题"
+      description: "配置 页面标题（DASHDOT_PAGE_TITLE）。官方默认值：dash.。"
+    disable_integrations:
+      name: "禁用集成"
+      description: "配置 禁用集成（DASHDOT_DISABLE_INTEGRATIONS）。官方默认值：false。"
+    disable_background_stats_collection:
+      name: "禁用后台指标采集"
+      description: "配置 禁用后台指标采集（DASHDOT_DISABLE_BACKGROUND_STATS_COLLECTION）。官方默认值：false。"
+    show_dash_version:
+      name: "版本显示方式"
+      description: "配置 版本显示方式（DASHDOT_SHOW_DASH_VERSION）。官方默认值：icon_hover。"
+    use_imperial:
+      name: "使用英制单位"
+      description: "配置 使用英制单位（DASHDOT_USE_IMPERIAL）。官方默认值：false。"
+    always_show_percentages:
+      name: "始终显示百分比"
+      description: "配置 始终显示百分比（DASHDOT_ALWAYS_SHOW_PERCENTAGES）。官方默认值：false。"
+    os_label_list:
+      name: "系统信息字段"
+      description: "配置 系统信息字段（DASHDOT_OS_LABEL_LIST）。官方默认值：os,arch,up_since。"
+    show_host:
+      name: "显示主机名"
+      description: "配置 显示主机名（DASHDOT_SHOW_HOST）。官方默认值：false。"
+    custom_host:
+      name: "自定义主机名"
+      description: "配置 自定义主机名（DASHDOT_CUSTOM_HOST）。默认不设置，仅在填写后生效。"
+    os_widget_grow:
+      name: "系统组件相对宽度"
+      description: "配置 系统组件相对宽度（DASHDOT_OS_WIDGET_GROW）。官方默认值：2.5。"
+    os_widget_min_width:
+      name: "系统组件最小宽度"
+      description: "配置 系统组件最小宽度（DASHDOT_OS_WIDGET_MIN_WIDTH）。官方默认值：300。"
+    override_os:
+      name: "覆盖操作系统名称"
+      description: "配置 覆盖操作系统名称（DASHDOT_OVERRIDE_OS）。默认不设置，仅在填写后生效。"
+    override_arch:
+      name: "覆盖系统架构"
+      description: "配置 覆盖系统架构（DASHDOT_OVERRIDE_ARCH）。默认不设置，仅在填写后生效。"
+    cpu_label_list:
+      name: "CPU 信息字段"
+      description: "配置 CPU 信息字段（DASHDOT_CPU_LABEL_LIST）。官方默认值：brand,model,cores,threads,frequency。"
+    enable_cpu_temps:
+      name: "显示 CPU 温度"
+      description: "配置 显示 CPU 温度（DASHDOT_ENABLE_CPU_TEMPS）。官方默认值：false。"
+    cpu_temps_mode:
+      name: "CPU 温度模式"
+      description: "配置 CPU 温度模式（DASHDOT_CPU_TEMPS_MODE）。官方默认值：avg。"
+    cpu_cores_toggle_mode:
+      name: "CPU 核心显示模式"
+      description: "配置 CPU 核心显示模式（DASHDOT_CPU_CORES_TOGGLE_MODE）。官方默认值：toggle。"
+    cpu_widget_grow:
+      name: "CPU 组件相对宽度"
+      description: "配置 CPU 组件相对宽度（DASHDOT_CPU_WIDGET_GROW）。官方默认值：4。"
+    cpu_widget_min_width:
+      name: "CPU 组件最小宽度"
+      description: "配置 CPU 组件最小宽度（DASHDOT_CPU_WIDGET_MIN_WIDTH）。官方默认值：500。"
+    cpu_shown_datapoints:
+      name: "CPU 图表数据点数量"
+      description: "配置 CPU 图表数据点数量（DASHDOT_CPU_SHOWN_DATAPOINTS）。官方默认值：20。"
+    cpu_poll_interval:
+      name: "CPU 轮询间隔"
+      description: "配置 CPU 轮询间隔（DASHDOT_CPU_POLL_INTERVAL）。官方默认值：1000。"
+    override_cpu_brand:
+      name: "覆盖 CPU 品牌"
+      description: "配置 覆盖 CPU 品牌（DASHDOT_OVERRIDE_CPU_BRAND）。默认不设置，仅在填写后生效。"
+    override_cpu_model:
+      name: "覆盖 CPU 型号"
+      description: "配置 覆盖 CPU 型号（DASHDOT_OVERRIDE_CPU_MODEL）。默认不设置，仅在填写后生效。"
+    override_cpu_cores:
+      name: "覆盖 CPU 核心数"
+      description: "配置 覆盖 CPU 核心数（DASHDOT_OVERRIDE_CPU_CORES）。默认不设置，仅在填写后生效。"
+    override_cpu_threads:
+      name: "覆盖 CPU 线程数"
+      description: "配置 覆盖 CPU 线程数（DASHDOT_OVERRIDE_CPU_THREADS）。默认不设置，仅在填写后生效。"
+    override_cpu_frequency:
+      name: "覆盖 CPU 频率"
+      description: "配置 覆盖 CPU 频率（DASHDOT_OVERRIDE_CPU_FREQUENCY）。默认不设置，仅在填写后生效。"
+    storage_label_list:
+      name: "存储信息字段"
+      description: "配置 存储信息字段（DASHDOT_STORAGE_LABEL_LIST）。官方默认值：brand,size,type。"
+    fs_device_filter:
+      name: "存储设备过滤列表"
+      description: "配置 存储设备过滤列表（DASHDOT_FS_DEVICE_FILTER）。默认不设置，仅在填写后生效。"
+    fs_type_filter:
+      name: "文件系统类型过滤列表"
+      description: "配置 文件系统类型过滤列表（DASHDOT_FS_TYPE_FILTER）。官方默认值：cifs,9p,fuse.rclone,fuse.mergerfs,nfs4,iso9660,fuse.shfs,autofs。"
+    fs_virtual_mounts:
+      name: "虚拟挂载列表"
+      description: "配置 虚拟挂载列表（DASHDOT_FS_VIRTUAL_MOUNTS）。默认不设置，仅在填写后生效。"
+    storage_widget_items_per_page:
+      name: "存储组件每页数量"
+      description: "配置 存储组件每页数量（DASHDOT_STORAGE_WIDGET_ITEMS_PER_PAGE）。官方默认值：3。"
+    storage_widget_grow:
+      name: "存储组件相对宽度"
+      description: "配置 存储组件相对宽度（DASHDOT_STORAGE_WIDGET_GROW）。官方默认值：3.5。"
+    storage_widget_min_width:
+      name: "存储组件最小宽度"
+      description: "配置 存储组件最小宽度（DASHDOT_STORAGE_WIDGET_MIN_WIDTH）。官方默认值：500。"
+    storage_poll_interval:
+      name: "存储轮询间隔"
+      description: "配置 存储轮询间隔（DASHDOT_STORAGE_POLL_INTERVAL）。官方默认值：60000。"
+    override_storage_brands:
+      name: "覆盖存储品牌"
+      description: "配置 覆盖存储品牌（DASHDOT_OVERRIDE_STORAGE_BRANDS）。默认不设置，仅在填写后生效。"
+    override_storage_sizes:
+      name: "覆盖存储容量"
+      description: "配置 覆盖存储容量（DASHDOT_OVERRIDE_STORAGE_SIZES）。默认不设置，仅在填写后生效。"
+    override_storage_types:
+      name: "覆盖存储类型"
+      description: "配置 覆盖存储类型（DASHDOT_OVERRIDE_STORAGE_TYPES）。默认不设置，仅在填写后生效。"
+    ram_label_list:
+      name: "内存信息字段"
+      description: "配置 内存信息字段（DASHDOT_RAM_LABEL_LIST）。官方默认值：brand,size,type,frequency。"
+    ram_widget_grow:
+      name: "内存组件相对宽度"
+      description: "配置 内存组件相对宽度（DASHDOT_RAM_WIDGET_GROW）。官方默认值：4。"
+    ram_widget_min_width:
+      name: "内存组件最小宽度"
+      description: "配置 内存组件最小宽度（DASHDOT_RAM_WIDGET_MIN_WIDTH）。官方默认值：500。"
+    ram_shown_datapoints:
+      name: "内存图表数据点数量"
+      description: "配置 内存图表数据点数量（DASHDOT_RAM_SHOWN_DATAPOINTS）。官方默认值：20。"
+    ram_poll_interval:
+      name: "内存轮询间隔"
+      description: "配置 内存轮询间隔（DASHDOT_RAM_POLL_INTERVAL）。官方默认值：1000。"
+    override_ram_brand:
+      name: "覆盖内存品牌"
+      description: "配置 覆盖内存品牌（DASHDOT_OVERRIDE_RAM_BRAND）。默认不设置，仅在填写后生效。"
+    override_ram_size:
+      name: "覆盖内存容量"
+      description: "配置 覆盖内存容量（DASHDOT_OVERRIDE_RAM_SIZE）。默认不设置，仅在填写后生效。"
+    override_ram_type:
+      name: "覆盖内存类型"
+      description: "配置 覆盖内存类型（DASHDOT_OVERRIDE_RAM_TYPE）。默认不设置，仅在填写后生效。"
+    override_ram_frequency:
+      name: "覆盖内存频率"
+      description: "配置 覆盖内存频率（DASHDOT_OVERRIDE_RAM_FREQUENCY）。默认不设置，仅在填写后生效。"
+    network_label_list:
+      name: "网络信息字段"
+      description: "配置 网络信息字段（DASHDOT_NETWORK_LABEL_LIST）。官方默认值：type,speed_up,speed_down,interface_speed。"
+    accept_ookla_eula:
+      name: "接受 Ookla 协议"
+      description: "配置 接受 Ookla 协议（DASHDOT_ACCEPT_OOKLA_EULA）。官方默认值：false。"
+    use_network_interface:
+      name: "指定网络接口"
+      description: "配置 指定网络接口（DASHDOT_USE_NETWORK_INTERFACE）。默认不设置，仅在填写后生效。"
+    speed_test_from_path:
+      name: "测速结果文件路径"
+      description: "配置 测速结果文件路径（DASHDOT_SPEED_TEST_FROM_PATH）。默认不设置，仅在填写后生效。"
+    network_speed_as_bytes:
+      name: "网络速度使用字节单位"
+      description: "配置 网络速度使用字节单位（DASHDOT_NETWORK_SPEED_AS_BYTES）。官方默认值：false。"
+    speed_test_interval:
+      name: "测速间隔"
+      description: "配置 测速间隔（DASHDOT_SPEED_TEST_INTERVAL）。官方默认值：240。"
+    speed_test_interval_cron:
+      name: "测速 Cron 表达式"
+      description: "配置 测速 Cron 表达式（DASHDOT_SPEED_TEST_INTERVAL_CRON）。默认不设置，仅在填写后生效。"
+    network_widget_grow:
+      name: "网络组件相对宽度"
+      description: "配置 网络组件相对宽度（DASHDOT_NETWORK_WIDGET_GROW）。官方默认值：6。"
+    network_widget_min_width:
+      name: "网络组件最小宽度"
+      description: "配置 网络组件最小宽度（DASHDOT_NETWORK_WIDGET_MIN_WIDTH）。官方默认值：500。"
+    network_shown_datapoints:
+      name: "网络图表数据点数量"
+      description: "配置 网络图表数据点数量（DASHDOT_NETWORK_SHOWN_DATAPOINTS）。官方默认值：20。"
+    network_poll_interval:
+      name: "网络轮询间隔"
+      description: "配置 网络轮询间隔（DASHDOT_NETWORK_POLL_INTERVAL）。官方默认值：1000。"
+    override_network_type:
+      name: "覆盖网络类型"
+      description: "配置 覆盖网络类型（DASHDOT_OVERRIDE_NETWORK_TYPE）。默认不设置，仅在填写后生效。"
+    override_network_speed_up:
+      name: "覆盖上行速度"
+      description: "配置 覆盖上行速度（DASHDOT_OVERRIDE_NETWORK_SPEED_UP）。默认不设置，仅在填写后生效。"
+    override_network_speed_down:
+      name: "覆盖下行速度"
+      description: "配置 覆盖下行速度（DASHDOT_OVERRIDE_NETWORK_SPEED_DOWN）。默认不设置，仅在填写后生效。"
+    override_network_interface_speed:
+      name: "覆盖接口速度"
+      description: "配置 覆盖接口速度（DASHDOT_OVERRIDE_NETWORK_INTERFACE_SPEED）。默认不设置，仅在填写后生效。"
+    override_network_public_ip:
+      name: "覆盖公网 IP"
+      description: "配置 覆盖公网 IP（DASHDOT_OVERRIDE_NETWORK_PUBLIC_IP）。默认不设置，仅在填写后生效。"
+    gpu_label_list:
+      name: "GPU 信息字段"
+      description: "配置 GPU 信息字段（DASHDOT_GPU_LABEL_LIST）。官方默认值：brand, model, memory。"
+    gpu_brand_filter:
+      name: "GPU 品牌过滤列表"
+      description: "配置 GPU 品牌过滤列表（DASHDOT_GPU_BRAND_FILTER）。默认不设置，仅在填写后生效。"
+    gpu_model_filter:
+      name: "GPU 型号过滤列表"
+      description: "配置 GPU 型号过滤列表（DASHDOT_GPU_MODEL_FILTER）。默认不设置，仅在填写后生效。"
+    gpu_widget_grow:
+      name: "GPU 组件相对宽度"
+      description: "配置 GPU 组件相对宽度（DASHDOT_GPU_WIDGET_GROW）。官方默认值：6。"
+    gpu_widget_min_width:
+      name: "GPU 组件最小宽度"
+      description: "配置 GPU 组件最小宽度（DASHDOT_GPU_WIDGET_MIN_WIDTH）。官方默认值：700。"
+    gpu_shown_datapoints:
+      name: "GPU 图表数据点数量"
+      description: "配置 GPU 图表数据点数量（DASHDOT_GPU_SHOWN_DATAPOINTS）。官方默认值：20。"
+    gpu_poll_interval:
+      name: "GPU 轮询间隔"
+      description: "配置 GPU 轮询间隔（DASHDOT_GPU_POLL_INTERVAL）。官方默认值：1000。"
+    override_gpu_brands:
+      name: "覆盖 GPU 品牌"
+      description: "配置 覆盖 GPU 品牌（DASHDOT_OVERRIDE_GPU_BRANDS）。默认不设置，仅在填写后生效。"
+    override_gpu_models:
+      name: "覆盖 GPU 型号"
+      description: "配置 覆盖 GPU 型号（DASHDOT_OVERRIDE_GPU_MODELS）。默认不设置，仅在填写后生效。"
+    override_gpu_memories:
+      name: "覆盖 GPU 显存"
+      description: "配置 覆盖 GPU 显存（DASHDOT_OVERRIDE_GPU_MEMORIES）。默认不设置，仅在填写后生效。"
+

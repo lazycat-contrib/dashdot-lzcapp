@@ -1,0 +1,20 @@
+package: cloud.lazycat.app.dashdot
+version: 5.9.2
+name: Dashdot
+description: "一个现代的服务器仪表盘"
+min_os_version: 1.5.0
+homepage: https://getdashdot.com
+author: getdashdot
+
+locales:
+  zh:
+    name: "Dashdot"
+    description: "一个现代的服务器仪表盘"
+  en:
+    name: "Dashdot"
+    description: "A modern server dashboard"
+
+permissions:
+  required:
+    - net.internet
+

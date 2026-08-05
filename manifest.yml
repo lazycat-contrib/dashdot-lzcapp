@@ -1,11 +1,3 @@
-lzc-sdk-version: "0.1"
-name: Dashdot
-package: cloud.lazycat.app.dashdot
-version: 5.9.2
-min_os_version: 1.3.0
-description: 一个现代的服务器仪表盘
-homepage: https://getdashdot.com
-author: getdashdot
 application:
   subdomain: dashdot
   background_task: true
@@ -13,13 +5,147 @@ application:
   gpu_accel: false
   kvm_accel: false
   usb_accel: false
-  routes:
-    - /=http://dash.cloud.lazycat.app.dashdot.lzcapp:3001/
+  upstreams:
+    - location: /
+      backend: {{ printf "http://dash:%s%s" .U.port .U.routing_path | quote }}
+
 services:
   dash:
-  # mauricenino/dashdot:5.9.2
+    # mauricenino/dashdot:5.9.2
     image: registry.lazycat.cloud/czyt/mauricenino/dashdot:6a748aeaaf0509ee
     environment:
-      - DASHDOT_PAGE_TITLE=${LAZYCAT_BOX_NAME} 's Dashboard
-      - DASHDOT_ENABLE_CPU_TEMPS=true
-      - DASHDOT_ACCEPT_OOKLA_EULA=true
+      - {{ printf "DASHDOT_WIDGET_LIST=%s" .U.widget_list | quote }}
+      - {{ printf "DASHDOT_PORT=%s" .U.port | quote }}
+      - {{ printf "DASHDOT_ROUTING_PATH=%s" .U.routing_path | quote }}
+      - {{ printf "DASHDOT_PAGE_TITLE=%s" .U.page_title | quote }}
+      - {{ printf "DASHDOT_DISABLE_INTEGRATIONS=%t" .U.disable_integrations | quote }}
+      - {{ printf "DASHDOT_DISABLE_BACKGROUND_STATS_COLLECTION=%t" .U.disable_background_stats_collection | quote }}
+      - {{ printf "DASHDOT_SHOW_DASH_VERSION=%s" .U.show_dash_version | quote }}
+      - {{ printf "DASHDOT_USE_IMPERIAL=%t" .U.use_imperial | quote }}
+      - {{ printf "DASHDOT_ALWAYS_SHOW_PERCENTAGES=%t" .U.always_show_percentages | quote }}
+      - {{ printf "DASHDOT_OS_LABEL_LIST=%s" .U.os_label_list | quote }}
+      - {{ printf "DASHDOT_SHOW_HOST=%t" .U.show_host | quote }}
+{{ with .U.custom_host }}
+      - {{ printf "DASHDOT_CUSTOM_HOST=%s" . | quote }}
+{{ end }}
+      - {{ printf "DASHDOT_OS_WIDGET_GROW=%s" .U.os_widget_grow | quote }}
+      - {{ printf "DASHDOT_OS_WIDGET_MIN_WIDTH=%s" .U.os_widget_min_width | quote }}
+{{ with .U.override_os }}
+      - {{ printf "DASHDOT_OVERRIDE_OS=%s" . | quote }}
+{{ end }}
+{{ with .U.override_arch }}
+      - {{ printf "DASHDOT_OVERRIDE_ARCH=%s" . | quote }}
+{{ end }}
+      - {{ printf "DASHDOT_CPU_LABEL_LIST=%s" .U.cpu_label_list | quote }}
+      - {{ printf "DASHDOT_ENABLE_CPU_TEMPS=%t" .U.enable_cpu_temps | quote }}
+      - {{ printf "DASHDOT_CPU_TEMPS_MODE=%s" .U.cpu_temps_mode | quote }}
+      - {{ printf "DASHDOT_CPU_CORES_TOGGLE_MODE=%s" .U.cpu_cores_toggle_mode | quote }}
+      - {{ printf "DASHDOT_CPU_WIDGET_GROW=%s" .U.cpu_widget_grow | quote }}
+      - {{ printf "DASHDOT_CPU_WIDGET_MIN_WIDTH=%s" .U.cpu_widget_min_width | quote }}
+      - {{ printf "DASHDOT_CPU_SHOWN_DATAPOINTS=%s" .U.cpu_shown_datapoints | quote }}
+      - {{ printf "DASHDOT_CPU_POLL_INTERVAL=%s" .U.cpu_poll_interval | quote }}
+{{ with .U.override_cpu_brand }}
+      - {{ printf "DASHDOT_OVERRIDE_CPU_BRAND=%s" . | quote }}
+{{ end }}
+{{ with .U.override_cpu_model }}
+      - {{ printf "DASHDOT_OVERRIDE_CPU_MODEL=%s" . | quote }}
+{{ end }}
+{{ with .U.override_cpu_cores }}
+      - {{ printf "DASHDOT_OVERRIDE_CPU_CORES=%s" . | quote }}
+{{ end }}
+{{ with .U.override_cpu_threads }}
+      - {{ printf "DASHDOT_OVERRIDE_CPU_THREADS=%s" . | quote }}
+{{ end }}
+{{ with .U.override_cpu_frequency }}
+      - {{ printf "DASHDOT_OVERRIDE_CPU_FREQUENCY=%s" . | quote }}
+{{ end }}
+      - {{ printf "DASHDOT_STORAGE_LABEL_LIST=%s" .U.storage_label_list | quote }}
+{{ with .U.fs_device_filter }}
+      - {{ printf "DASHDOT_FS_DEVICE_FILTER=%s" . | quote }}
+{{ end }}
+      - {{ printf "DASHDOT_FS_TYPE_FILTER=%s" .U.fs_type_filter | quote }}
+{{ with .U.fs_virtual_mounts }}
+      - {{ printf "DASHDOT_FS_VIRTUAL_MOUNTS=%s" . | quote }}
+{{ end }}
+      - {{ printf "DASHDOT_STORAGE_WIDGET_ITEMS_PER_PAGE=%s" .U.storage_widget_items_per_page | quote }}
+      - {{ printf "DASHDOT_STORAGE_WIDGET_GROW=%s" .U.storage_widget_grow | quote }}
+      - {{ printf "DASHDOT_STORAGE_WIDGET_MIN_WIDTH=%s" .U.storage_widget_min_width | quote }}
+      - {{ printf "DASHDOT_STORAGE_POLL_INTERVAL=%s" .U.storage_poll_interval | quote }}
+{{ with .U.override_storage_brands }}
+      - {{ printf "DASHDOT_OVERRIDE_STORAGE_BRANDS=%s" . | quote }}
+{{ end }}
+{{ with .U.override_storage_sizes }}
+      - {{ printf "DASHDOT_OVERRIDE_STORAGE_SIZES=%s" . | quote }}
+{{ end }}
+{{ with .U.override_storage_types }}
+      - {{ printf "DASHDOT_OVERRIDE_STORAGE_TYPES=%s" . | quote }}
+{{ end }}
+      - {{ printf "DASHDOT_RAM_LABEL_LIST=%s" .U.ram_label_list | quote }}
+      - {{ printf "DASHDOT_RAM_WIDGET_GROW=%s" .U.ram_widget_grow | quote }}
+      - {{ printf "DASHDOT_RAM_WIDGET_MIN_WIDTH=%s" .U.ram_widget_min_width | quote }}
+      - {{ printf "DASHDOT_RAM_SHOWN_DATAPOINTS=%s" .U.ram_shown_datapoints | quote }}
+      - {{ printf "DASHDOT_RAM_POLL_INTERVAL=%s" .U.ram_poll_interval | quote }}
+{{ with .U.override_ram_brand }}
+      - {{ printf "DASHDOT_OVERRIDE_RAM_BRAND=%s" . | quote }}
+{{ end }}
+{{ with .U.override_ram_size }}
+      - {{ printf "DASHDOT_OVERRIDE_RAM_SIZE=%s" . | quote }}
+{{ end }}
+{{ with .U.override_ram_type }}
+      - {{ printf "DASHDOT_OVERRIDE_RAM_TYPE=%s" . | quote }}
+{{ end }}
+{{ with .U.override_ram_frequency }}
+      - {{ printf "DASHDOT_OVERRIDE_RAM_FREQUENCY=%s" . | quote }}
+{{ end }}
+      - {{ printf "DASHDOT_NETWORK_LABEL_LIST=%s" .U.network_label_list | quote }}
+      - {{ printf "DASHDOT_ACCEPT_OOKLA_EULA=%t" .U.accept_ookla_eula | quote }}
+{{ with .U.use_network_interface }}
+      - {{ printf "DASHDOT_USE_NETWORK_INTERFACE=%s" . | quote }}
+{{ end }}
+{{ with .U.speed_test_from_path }}
+      - {{ printf "DASHDOT_SPEED_TEST_FROM_PATH=%s" . | quote }}
+{{ end }}
+      - {{ printf "DASHDOT_NETWORK_SPEED_AS_BYTES=%t" .U.network_speed_as_bytes | quote }}
+      - {{ printf "DASHDOT_SPEED_TEST_INTERVAL=%s" .U.speed_test_interval | quote }}
+{{ with .U.speed_test_interval_cron }}
+      - {{ printf "DASHDOT_SPEED_TEST_INTERVAL_CRON=%s" . | quote }}
+{{ end }}
+      - {{ printf "DASHDOT_NETWORK_WIDGET_GROW=%s" .U.network_widget_grow | quote }}
+      - {{ printf "DASHDOT_NETWORK_WIDGET_MIN_WIDTH=%s" .U.network_widget_min_width | quote }}
+      - {{ printf "DASHDOT_NETWORK_SHOWN_DATAPOINTS=%s" .U.network_shown_datapoints | quote }}
+      - {{ printf "DASHDOT_NETWORK_POLL_INTERVAL=%s" .U.network_poll_interval | quote }}
+{{ with .U.override_network_type }}
+      - {{ printf "DASHDOT_OVERRIDE_NETWORK_TYPE=%s" . | quote }}
+{{ end }}
+{{ with .U.override_network_speed_up }}
+      - {{ printf "DASHDOT_OVERRIDE_NETWORK_SPEED_UP=%s" . | quote }}
+{{ end }}
+{{ with .U.override_network_speed_down }}
+      - {{ printf "DASHDOT_OVERRIDE_NETWORK_SPEED_DOWN=%s" . | quote }}
+{{ end }}
+{{ with .U.override_network_interface_speed }}
+      - {{ printf "DASHDOT_OVERRIDE_NETWORK_INTERFACE_SPEED=%s" . | quote }}
+{{ end }}
+{{ with .U.override_network_public_ip }}
+      - {{ printf "DASHDOT_OVERRIDE_NETWORK_PUBLIC_IP=%s" . | quote }}
+{{ end }}
+      - {{ printf "DASHDOT_GPU_LABEL_LIST=%s" .U.gpu_label_list | quote }}
+{{ with .U.gpu_brand_filter }}
+      - {{ printf "DASHDOT_GPU_BRAND_FILTER=%s" . | quote }}
+{{ end }}
+{{ with .U.gpu_model_filter }}
+      - {{ printf "DASHDOT_GPU_MODEL_FILTER=%s" . | quote }}
+{{ end }}
+      - {{ printf "DASHDOT_GPU_WIDGET_GROW=%s" .U.gpu_widget_grow | quote }}
+      - {{ printf "DASHDOT_GPU_WIDGET_MIN_WIDTH=%s" .U.gpu_widget_min_width | quote }}
+      - {{ printf "DASHDOT_GPU_SHOWN_DATAPOINTS=%s" .U.gpu_shown_datapoints | quote }}
+      - {{ printf "DASHDOT_GPU_POLL_INTERVAL=%s" .U.gpu_poll_interval | quote }}
+{{ with .U.override_gpu_brands }}
+      - {{ printf "DASHDOT_OVERRIDE_GPU_BRANDS=%s" . | quote }}
+{{ end }}
+{{ with .U.override_gpu_models }}
+      - {{ printf "DASHDOT_OVERRIDE_GPU_MODELS=%s" . | quote }}
+{{ end }}
+{{ with .U.override_gpu_memories }}
+      - {{ printf "DASHDOT_OVERRIDE_GPU_MEMORIES=%s" . | quote }}
+{{ end }}
